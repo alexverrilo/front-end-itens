@@ -46,7 +46,7 @@ const MainScreen: React.FC<Props> = (props) => {
 	const [itens, setItens] = useState<Item[]>([]);
 
 	useFocusEffect(useCallback(()=>{
-		axios.get<Item[]>('http://localhost:4000/api/itens')
+		axios.get<Item[]>('http://localhost:4000/api/itens') // Adiciona um novo item no backend
 		.then((res)=>{
 			setItens(res.data);
 		})
@@ -73,6 +73,7 @@ const MainScreen: React.FC<Props> = (props) => {
 	}
 
 	return (
+		
 		<View style={styles.container}>
 			<FlatList
 				renderItem={renderFlatListItem}

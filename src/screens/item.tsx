@@ -34,14 +34,14 @@ const styles = StyleSheet.create({
     }
 })
 
-type Props = NativeStackScreenProps<StackParams, 'Item'>;
+type Props = NativeStackScreenProps<StackParams, 'Item'>; // Comando para navegar entre as telas.
 
 const ItemScreen: React.FC <Props>= (props) => {
     
-    const item = props.route.params.item;
+    const item = props.route.params.item; // Pega o item.
 
-    const itemPressionado = () => {
-        props.navigation.navigate('EditarItem',{item})
+    const itemPressionado = () => { 
+        props.navigation.navigate('EditarItem',{item}) // Navegar para proxima tela.
     }
 
     return (

@@ -5,6 +5,7 @@ import Item from "../models/item";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StackParams } from "../../App";
 import item from "./item";
+import axios from "axios";
 
 const styles = StyleSheet.create({
 
@@ -55,7 +56,15 @@ const novoItemScreen: React.FC<Props> = (props) => {
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
 
-    const botaoSalvarPressionado = () => {};
+    const botaoSalvarPressionado = () => {
+        axios.post('http://localhost:4000/api/itens', {nome, descricao})
+        .then(() => {
+            props.navigation.pop(1);
+        })
+        .catch((error) => {
+          alert(error.message)         
+        });
+    };
 
 return(
     <View style={styles.container}>
