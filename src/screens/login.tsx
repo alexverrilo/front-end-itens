@@ -37,19 +37,13 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 		borderBottomWidth: 1,
 		borderBottomColor: '#cc0',
+		borderRadius: 10,
+		margin: 10,
 	},
 
-  inputFirst: {
-		borderTopLeftRadius: 10,
-		borderTopRightRadius: 10,
+	InputBox:{
+		padding:16,
 	},
-
-	inputLast: {
-		borderBottomWidth: 0,
-		borderBottomLeftRadius: 10,
-		borderBottomRightRadius: 10,
-	},
-
 	botaoEntrar: {
 		marginVertical: 16,
 		backgroundColor: '#000',
@@ -105,17 +99,18 @@ const LoginScreen: React.FC<Props> = (props) => {
 					ERRO: Login incorreto.
 				</Text>
 			}
-			
-			<TextInput
-				style={{...styles.input, ...styles.inputFirst}}
-				placeholder='Nome de usuário!'
-				onChangeText={setNomeUsuario}
-			/>
-			<TextInput
-				style={{...styles.input, ...styles.inputLast}}
-				placeholder='Senha'
-				onChangeText={setSenha}
-			/>
+			<View style={styles.InputBox}>
+				<TextInput
+					style={styles.input}
+					placeholder='Nome de usuário!'
+					onChangeText={setNomeUsuario}
+				/>
+				<TextInput
+					style={styles.input}
+					placeholder='Senha'
+					onChangeText={setSenha}
+				/>
+			</View>
 			<TouchableOpacity
 				style={styles.botaoEntrar}
 				onPress={botaoEntrarPressionado}>
@@ -125,7 +120,7 @@ const LoginScreen: React.FC<Props> = (props) => {
 			<TouchableOpacity
 				style={styles.linkNovoUsuario}
 				onPress={() => {}}>
-				<Text>Novo usuário</Text>
+				<Text>Cadastre-se!</Text>
 			</TouchableOpacity>
 			
 		</View>
