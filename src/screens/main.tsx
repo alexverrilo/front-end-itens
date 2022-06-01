@@ -12,22 +12,31 @@ type Props = NativeStackScreenProps<StackParams,'Main'>;
 
 const styles = StyleSheet.create({
 	container:{
-		justifyContent:'center',
-		alignItems: 'center',
 	},
 	listItem: {
+		justifyContent: 'center',
 		backgroundColor: '#ff0',
 		padding: 20,
 		marginBottom: 20,
+		height: 100,
+		width: 400,
+		borderRadius: 15,
 	},
-
 	listItemText: {
 		textAlign: 'center',
 		fontSize: 24,
 	},
+	ViewList: {
+		alignItems:'center',
+		margin: 15,
+	},
+	ViewBotao: {
+		flex: 1,
+		alignItems: 'center',
+	},
 	Botao: {
 		height: 56,
-		width: 100,
+		width: 120,
 		backgroundColor: '#000',
 		padding: 16,
 		borderRadius: 8,
@@ -39,6 +48,7 @@ const styles = StyleSheet.create({
 		fontSize: 18,
 		textTransform: 'uppercase',
 	},
+
 })
 
 const MainScreen: React.FC<Props> = (props) => {
@@ -59,29 +69,32 @@ const MainScreen: React.FC<Props> = (props) => {
 		props.navigation.navigate('NovoItem')
 	}
 
-	const renderFlatListItem: ListRenderItem<Item> = ({item}) => {
+	const renderFlatListItem: ListRenderItem<Item> = ({item}) => { // Constante para criar um elemento.
 
 		const itemPressionado = () => {
 			props.navigation.navigate('Item', {item: item})
 		}
 
-		return (
-			<TouchableOpacity onPress={itemPressionado} style={styles.listItem}>
+		return ( // elemento do renderFlatList.
+			<TouchableOpacity onPress={itemPressionado} style={styles.listItem}> 
 				<Text style={styles.listItemText}>{item.nome}</Text>
 			</TouchableOpacity>
 		)
 	}
 
 	return (
-		
 		<View style={styles.container}>
+		<View style={styles.ViewList}>
 			<FlatList
 				renderItem={renderFlatListItem}
 				data={itens}
 			/>
+			</View>
+		<View style={styles.ViewBotao}>
 			<TouchableOpacity onPress={novoItemPressionado} style={styles.Botao}>
 				<Text style={styles.nomeBotao}>Adicionar</Text>
 			</TouchableOpacity>
+		</View>
 		</View>
 	)
 }

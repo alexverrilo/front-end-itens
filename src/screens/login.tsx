@@ -102,7 +102,7 @@ const LoginScreen: React.FC<Props> = (props) => {
 			<View style={styles.InputBox}>
 				<TextInput
 					style={styles.input}
-					placeholder='Nome de usuário!'
+					placeholder='Usuário'
 					onChangeText={setNomeUsuario}
 				/>
 				<TextInput
